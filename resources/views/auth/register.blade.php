@@ -1,7 +1,18 @@
 @extends('layouts.app')
+@section('css')
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Style -->
+<link rel="stylesheet" href="css/style.css">
+@endsection
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +84,68 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+<div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          {{-- <img src="images/iglesia.jpg" alt="Image" class="img-fluid"> --}}
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div style="text-align: center" class="mb-4">
+              <h3>Registrar</h3>
+             
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+
+              <div class="form-group first">
+                <label for="username">Nombre</label>
+                {{-- <input type="text" class="form-control" id="email" name="email" required value="{{ old('email') }}"  autofocus> --}}
+                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+          
+
+              </div>
+              <div class="form-group last mb-4">
+                <label for="password">Correo</label>
+                {{-- <input type="password" class="form-control" required name="password" id="password"> --}}
+                <input id="email" type="email" class="form-control" name="email" required autocomplete="current-password">
+                </div>
+                <div class="form-group first">
+                    <label for="username">Contraseña</label>
+                    {{-- <input type="text" class="form-control" id="email" name="email" required value="{{ old('email') }}"  autofocus> --}}
+                    <input id="password" type="password" minlength="8" class="form-control " name="password"  required autocomplete="email" autofocus>
+              
+    
+                  </div>
+              <div class="form-group last mb-4">
+                <label for="password">Confirmar Contraseña</label>
+                {{-- <input type="password" class="form-control" required name="password" id="password"> --}}
+                <input id="password-confirm" type="password"  minlength="8"  class="form-control" name="password_confirmation" required >
+                </div>
+            
+            {{-- <input type="submit" value="Iniciar Sesión" class="btn btn-block btn-primary">        --}}
+            <button type="submit" class="btn btn-block btn-primary">
+                {{ __('Registrar') }}
+            </button>
+            
+            </form>
+            <div style="text-align: center" class="mb-4">
+                <br>
+                <a style="text-decoration: none" href="{{ route('login') }}">Volver</a>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @section('js')
+ <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+@endsection
+
 @endsection
